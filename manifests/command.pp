@@ -1,4 +1,10 @@
 class nagios::command {
+	# Local
+	nagios::command::commands { "check_ntp_time":
+		command => '$USER1$/check_ntp_time -H $HOSTADDRESS$',
+	}
+
+	# Remote
 	nagios::command::commands { "nrpe_check_apt":
 		command => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c check_apt',
 	}
