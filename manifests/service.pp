@@ -8,6 +8,7 @@ class nagios::service {
 		"load",
 		"ntp",
 		"procs",
+		"puppet",
 		"smart",
 		"swap",
 		"user" ]:
