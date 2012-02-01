@@ -6,6 +6,7 @@ class nagios::service {
 		"kernel",
 		"libs",
 		"load",
+		"mailq",
 		"ntp",
 		"procs",
 		"puppet",
