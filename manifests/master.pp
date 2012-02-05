@@ -37,12 +37,14 @@ class nagios::master inherits nagios {
 	}
 
 	file { "/etc/nagios3/conf.d":
+		force   => true,
+		purge   => true,
 		recurse => true,
 		owner   => root,
 		group   => root,
 		mode    => 0644,
 		alias   => "conf.d",
-		notify  => Service["nagios3"],
+		# notify  => Service["nagios3"],
 		source  => "puppet:///modules/nagios/common/etc/nagios3/objects",
 		require => Package["nagios3"],
 	}

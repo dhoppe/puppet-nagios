@@ -10,11 +10,13 @@ class nagios::contact {
 	}
 
 	Nagios_contact <||> {
-		notify => Exec["fix-permissions"],
+		notify  => Exec["fix-permissions"],
+		require => File["conf.d"],
 	}
 
 	Nagios_contactgroup <||> {
-		notify => Exec["fix-permissions"],
+		notify  => Exec["fix-permissions"],
+		require => File["conf.d"],
 	}
 }
 
