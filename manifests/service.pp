@@ -11,6 +11,7 @@ class nagios::service {
 		"procs",
 		"puppet",
 		"smart",
+		"ssh",
 		"swap",
 		"user" ]:
 	}
