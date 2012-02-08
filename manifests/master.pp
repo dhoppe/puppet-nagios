@@ -37,22 +37,64 @@ class nagios::master inherits nagios {
 	}
 
 	file { "/etc/nagios3/conf.d":
-		force   => true,
-		purge   => true,
 		recurse => true,
 		owner   => root,
 		group   => root,
 		mode    => 0644,
 		alias   => "conf.d",
-		# notify  => Service["nagios3"],
-		source  => "puppet:///modules/nagios/common/etc/nagios3/objects",
+		notify  => Service["nagios3"],
+		source  => "puppet:///modules/nagios/common/etc/nagios3/conf.d",
 		require => Package["nagios3"],
+	}
+
+	file { [
+		"/etc/nagios3/conf.d/contacts_nagios2.cfg",
+		"/etc/nagios3/conf.d/extinfo_nagios2.cfg",
+		"/etc/nagios3/conf.d/generic-host_nagios2.cfg",
+		"/etc/nagios3/conf.d/generic-service_nagios2.cfg",
+		"/etc/nagios3/conf.d/hostgroups_nagios2.cfg",
+		"/etc/nagios3/conf.d/localhost_nagios2.cfg",
+		"/etc/nagios3/conf.d/services_nagios2.cfg",
+		"/etc/nagios3/conf.d/timeperiods_nagios2.cfg" ]:
+		ensure => absent,
 	}
 
 	package { [
 		"nagios3",
 		"nagios-nrpe-plugin" ]:
 		ensure => present,
+	}
+
+	resources { "nagios_command":
+		purge => true,
+	}
+
+	resources { "nagios_contact":
+		purge => true,
+	}
+
+	resources { "nagios_contactgroup":
+		purge => true,
+	}
+
+	resources { "nagios_host":
+		purge => true,
+	}
+
+	resources { "nagios_hostgroup":
+		purge => true,
+	}
+
+	resources { "nagios_hostextinfo":
+		purge => true,
+	}
+
+	resources { "nagios_service":
+		purge => true,
+	}
+
+	resources { "nagios_servicegroup":
+		purge => true,
 	}
 
 	service { "nagios3":
