@@ -6,10 +6,11 @@
   "project_page": "http://github.com/dhoppe/puppet-nagios",
   "source": "git://github.com/dhoppe/puppet-nagios",
   "summary": "Nagios Module",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "checksums": {
-    "Modulefile": "bcb8a7b556b423068fa801483514dc9a",
-    "README": "643e53d2d3643a653f1b24cf50b62941",
+    "Modulefile": "b0dc77188cacc2db30dae33e2e576c9f",
+    "README": "5a2ebed9feaaed859ded7520ed909a21",
+    "examples/nagios.yaml": "552a948569279a04e769d5a0ab4cad66",
     "files/common/etc/nagios/nrpe.d/apt.cfg": "42e4849d4408af35ea506aa82565027c",
     "files/common/etc/nagios/nrpe.d/disk.cfg": "39c4a17928176269f076c35ad62192e0",
     "files/common/etc/nagios/nrpe.d/iflocal.cfg": "e0bfce839950f121e030ae49327ff3fa",
@@ -45,16 +46,16 @@
     "manifests/command.pp": "22120cc9329bfcd38f76c80511911dcd",
     "manifests/command/commands.pp": "84a5f568175551848f6d119821d12414",
     "manifests/common.pp": "548c7a1ba35348d3fba43cef4ed346a1",
-    "manifests/contact.pp": "17c6bc7576fa58cc694afaaddc9f9be6",
+    "manifests/contact.pp": "a716f5f814ae3c3e5a9075d114c9a8c6",
     "manifests/contact/contactgroups.pp": "7402d7fc85f38a0080424c236f8a47f6",
     "manifests/contact/contacts.pp": "ce56176125aadc6e03fc73f167f8fa8e",
-    "manifests/host.pp": "0cfae3626b4733576deddb3fea74cc43",
+    "manifests/host.pp": "d9b30c88b3c01962b96dfc45861f81f9",
     "manifests/host/hostextinfo.pp": "b5e4c2ced6a276dd68515293a3ead498",
     "manifests/host/hostgroups.pp": "d24cce468c2bf7fb37ca48593875ad7c",
     "manifests/host/hosts.pp": "7140ac99c04354405775e2be6716d0bd",
-    "manifests/init.pp": "eaf151bcc55311a7c8992726c69e0a19",
+    "manifests/init.pp": "bdd44383d9c601140aacdcff33689e6d",
     "manifests/master.pp": "6335df5021224bb5831f54ef85164eb7",
-    "manifests/service.pp": "868f8faee17bfcb9044e33d390eef12c",
+    "manifests/service.pp": "3db69f503e6a81dcd6a805dcc8db6535",
     "manifests/service/servicegroups.pp": "b67bc10507e3ed56d919f26ddb9eb2b9",
     "manifests/service/services.pp": "87b66d6ba42c02cbd7c3d84b4fe47507",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
@@ -64,6 +65,10 @@
     "tests/init.pp": "b2f496ae67e06fc88dde9fead9b02c84"
   },
   "dependencies": [
+    {
+      "name": "dhoppe/puppet",
+      "versionRequirement": "\u003e\u003d0.0.1"
+    },
     {
       "name": "dhoppe/role",
       "versionRequirement": "\u003e\u003d0.0.1"

@@ -1,12 +1,15 @@
 class nagios::contact {
-	nagios::contact::contacts { "hotkey":
-		alias => "Dennis Hoppe",
-		email => "nagios@${::domain}",
-		group => "admins",
+	$user = hiera('user')
+	$group = hiera('group')
+
+	nagios::contact::contacts { "$user":
+		alias => hiera('calias'),
+		email => hiera('email'),
+		group => hiera('group'),
 	}
 
-	nagios::contact::contactgroups { "admins":
-		alias => "Debian Solutions"
+	nagios::contact::contactgroups { "$group":
+		alias => hiera('galias'),
 	}
 
 	Nagios_contact <||> {

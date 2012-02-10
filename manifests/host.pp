@@ -1,10 +1,7 @@
 class nagios::host {
-	nagios::host::hostgroups { [
-		"lenny",
-		"squeeze",
-		"maverick",
-		"natty" ]:
-	}
+	$hgroups = hiera_array('hgroups')
+
+	nagios::host::hostgroups { $hgroups: }
 
 	Nagios_host <<||>> {
 		notify  => Exec["fix-permissions"],
