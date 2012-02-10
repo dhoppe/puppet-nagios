@@ -21,7 +21,7 @@ sgroups:
    - 'ssh'
    - 'swap'
    - 'user'
-email: 'nagios@debian-solutions.de'
+email: 'nagios@%{domain}'
 group: 'admins'
 user: 'hotkey'
 whitelist:
