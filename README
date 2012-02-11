@@ -41,19 +41,19 @@
 #      command => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c check_apt',
 #   }
 #
-#   nagios::contact::contacts { "$user":
-#      alias => hiera('calias'),
-#      email => hiera('email'),
-#      group => hiera('group'),
+#   nagios::contact::contacts { $contacts[user]:
+#      alias => $contacts[alias],
+#      email => $contacts[email],
+#      group => $contacts[group],
 #   }
 #   
-#   nagios::contact::contactgroups { "$group":
-#      alias => hiera('galias'),
+#   nagios::contact::contactgroups { $contactgroups[group]:
+#      alias => $contactgroups[alias],
 #   }
 #   
 #   nagios::host::hosts { "$::hostname": }
 #   
-#   nagios::host::hostgroups { $hgroups: }
+#   nagios::host::hostgroups { $hostgroups: }
 #   
 #   nagios::host::hostextinfo { "$::hostname": }
 #   
@@ -61,7 +61,7 @@
 #      command => "nrpe_check_apt",
 #   }
 #   
-#   nagios::service::servicegroups { $sgroups: }
+#   nagios::service::servicegroups { $servicegroups: }
 #
 #   nagios-nrpe::whitelist { "/etc/nagios/nrpe.cfg":
 #      whitelist => hiera('whitelist'),

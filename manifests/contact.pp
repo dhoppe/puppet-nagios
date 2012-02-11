@@ -1,15 +1,15 @@
 class nagios::contact {
-	$user = hiera('user')
-	$group = hiera('group')
+	$contacts = hiera('contacts')
+	$contactgroups = hiera('contactgroups')
 
-	nagios::contact::contacts { "$user":
-		alias => hiera('calias'),
-		email => hiera('email'),
-		group => hiera('group'),
+	nagios::contact::contacts { $contacts[user]:
+		alias => $contacts[alias],
+		email => $contacts[email],
+		group => $contacts[group],
 	}
 
-	nagios::contact::contactgroups { "$group":
-		alias => hiera('galias'),
+	nagios::contact::contactgroups { $contactgroups[group]:
+		alias => $contactgroups[alias],
 	}
 
 	Nagios_contact <||> {
