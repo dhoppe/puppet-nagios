@@ -35,6 +35,7 @@
 #   Installs the nagios.cfg etc.
 #
 # Requires:
+#   -
 #
 # Sample Usage:
 #   nagios::command::commands { "nrpe_check_apt":

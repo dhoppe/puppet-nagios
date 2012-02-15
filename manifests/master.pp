@@ -28,7 +28,6 @@ class nagios::master inherits nagios {
 		require => Package["nagios3"],
 	}
 
-	$htpasswd = hiera('htpasswd')
 	file { "/etc/nagios3/htpasswd.users":
 		owner   => root,
 		group   => root,
