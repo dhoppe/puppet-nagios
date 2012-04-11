@@ -4,7 +4,7 @@ define nagios::host::hosts() {
 		alias      => $::hostname,
 		address    => $::ipaddress,
 		hostgroups => $::lsbdistcodename,
-		use        => "generic-host",
+		use        => 'generic-host',
 		target     => "/etc/nagios3/conf.d/${::hostname}_hosts.cfg",
 	}
 }

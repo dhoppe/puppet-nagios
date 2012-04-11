@@ -16,7 +16,7 @@ define nagios::service::services($command = false, $group = false) {
 		host_name           => $::hostname,
 		servicegroups       => $t_group,
 		service_description => $name,
-		use                 => "generic-service",
+		use                 => 'generic-service',
 		target              => "/etc/nagios3/conf.d/${::hostname}_services.cfg",
 	}
 }
