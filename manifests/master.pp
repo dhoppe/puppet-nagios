@@ -17,6 +17,18 @@ class nagios::master inherits nagios {
 		notify      => Service['nagios3'],
 	}
 
+	if $::lsbdistcodename == 'squeeze' {
+		file { '/etc/default/npcd':
+			owner   => root,
+			group   => root,
+			mode    => '0644',
+			alias   => 'npcd',
+			source  => "puppet:///modules/nagios/${::lsbdistcodename}/etc/default/npcd",
+			notify  => Service['npcd'],
+			require => Package['pnp4nagios'],
+		}
+	}
+
 	file { '/etc/nagios3':
 		recurse => true,
 		owner   => root,
@@ -43,7 +55,10 @@ class nagios::master inherits nagios {
 		mode    => '0644',
 		alias   => 'conf.d',
 		notify  => Service['nagios3'],
-		source  => 'puppet:///modules/nagios/common/etc/nagios3/conf.d',
+		source  => [
+			"puppet:///modules/nagios/${::lsbdistcodename}/etc/nagios3/conf.d",
+			'puppet:///modules/nagios/common/etc/nagios3/conf.d'
+		],
 		require => Package['nagios3'],
 	}
 
@@ -63,6 +78,12 @@ class nagios::master inherits nagios {
 		'nagios3',
 		'nagios-nrpe-plugin' ]:
 		ensure => present,
+	}
+
+	if $::lsbdistcodename == 'squeeze' {
+		package { 'pnp4nagios':
+			ensure => present,
+		}
 	}
 
 	resources { 'nagios_command':
@@ -107,6 +128,19 @@ class nagios::master inherits nagios {
 			File['conf.d'],
 			Package['nagios3']
 		],
+	}
+
+	if $::lsbdistcodename == 'squeeze' {
+		service { 'npcd':
+			ensure     => running,
+			enable     => true,
+			hasrestart => true,
+			hasstatus  => true,
+			require    => [
+				File['npcd'],
+				Package['pnp4nagios']
+			],
+		}
 	}
 }
 
