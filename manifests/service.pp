@@ -1,5 +1,5 @@
 class nagios::service {
-	$servicegroups = hiera_array('servicegroups')
+	$servicegroups = hiera('servicegroups')
 
 	nagios::service::servicegroups { $servicegroups: }
 

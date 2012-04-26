@@ -1,5 +1,5 @@
 class nagios::host {
-	$hostgroups = hiera_array('hostgroups')
+	$hostgroups = hiera('hostgroups')
 
 	nagios::host::hostgroups { $hostgroups: }
 

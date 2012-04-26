@@ -1,5 +1,5 @@
 name 'dhoppe-nagios'
-version '0.0.23'
+version '0.0.24'
 
 author 'Dennis Hoppe'
 license 'GPLv2'
