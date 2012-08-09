@@ -25,7 +25,7 @@ define nagios::whitelist($whitelist = false) {
     file { $name:
       owner   => root,
       group   => root,
-      mode    =>' 0644',
+      mode    => '0644',
       alias   => 'nrpe.cfg',
       notify  => Service['nagios-nrpe-server'],
       content => template('nagios/common/etc/nagios/nrpe.cfg.erb'),
